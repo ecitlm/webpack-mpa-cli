@@ -11,15 +11,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://devloan.cardniu.com/zyxfxjd_service/', // 内测环境
+        target: 'http://test.it919.cn/api', // 内测环境
         changeOrigin: true,
         logLevel: 'debug'
       }
     },
 
-    // Various Dev Server settings
-    host: '0.0.0.0', // can be overwritten by process.env.HOST
-    port: 8888, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    host: '0.0.0.0',
+    port: 8888,
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -32,7 +31,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/appwl/sswlh5/',
+    assetsPublicPath: '/app',
     /**
      * Source Maps
      */

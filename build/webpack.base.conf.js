@@ -49,7 +49,7 @@ module.exports = {
       test: /\.(png|gif|jpe?g)$/,
       loader: 'url-loader',
       query: {
-        limit: 3500,
+        limit: 5000,
         name: 'images/[name].[ext]'
       }
     }, {
@@ -60,6 +60,9 @@ module.exports = {
         limit: 1000,
         name: 'fonts/[name].[ext]'
       }
+    }, {
+      test: /\.(htm|html)$/i,
+      loader: 'html-withimg-loader'
     }, {
       test: /\.js$/,
       loader: 'babel-loader', //
