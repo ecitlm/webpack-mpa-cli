@@ -4,14 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const utils = require('./utils')
 // const autoprefixer = require('autoprefixer')
 // const WebpackDevServer = require('webpack-dev-server') // webpack server 服务
-const path = require('path')
+// const path = require('path')
 module.exports = {
   entry: {
     index: ['./src/assets/js/index.js']
   },
   output: {
     filename: utils.assetsPath('js/[name].[hash].js'),
-    path: path.resolve(__dirname, '../dist/'), // 文件生产存放的路径
     publicPath: './'
   },
   module: {
@@ -25,7 +24,6 @@ module.exports = {
           options: {
             minimize: true, // css压缩,
             importLoaders: 1
-
           }
         }, {
           loader: 'postcss-loader',
@@ -49,15 +47,17 @@ module.exports = {
       test: /\.(png|gif|jpe?g)$/,
       loader: 'url-loader',
       query: {
-        limit: 5000,
-        name: 'images/[name].[ext]'
+        limit: 1000,
+        name: utils.assetsPath('images/[name].[ext]'),
+        publicPath: './'
+        // name: utils.assetsPath('/images/[name].[ext]')
       }
     }, {
       // 文件加载器，处理文件静态资源
       test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file-loader',
       query: {
-        limit: 1000,
+        limit: 3000,
         name: 'fonts/[name].[ext]'
       }
     }, {
@@ -72,7 +72,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html',
+      template: 'html-withimg-loader!' + 'src/index.html',
       chunks: ['index'],
       minify: { // 压缩HTML文件
         removeComments: true, // 移除HTML中的注释
@@ -85,7 +85,7 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/bundle.min.css?version=[hash]')
+      filename: utils.assetsPath('css/[name].[hash].css')
     }),
     new webpack.HotModuleReplacementPlugin(), // 热加载插件
     new webpack.NoErrorsPlugin(),
