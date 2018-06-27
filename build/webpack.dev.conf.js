@@ -1,4 +1,3 @@
-const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const config = require('../config')
@@ -6,7 +5,8 @@ const common = require('./webpack.base.conf')
 
 module.exports = merge(common, {
   output: {
-    path: path.resolve(__dirname, '../dist/') // 文件生产存放的路径
+    path: config.dev.assetsRoot, // 文件生产存放的路径
+    publicPath: config.dev.assetsPublicPath
   },
   devServer: {
     contentBase: './dist',

@@ -8,6 +8,7 @@ module.exports = {
   dev: {
     // Paths
     assetsSubDirectory: 'static',
+    assetsRoot: path.resolve(__dirname, '../dist/'),
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
@@ -24,12 +25,15 @@ module.exports = {
     notifyOnErrors: true,
     poll: false
   },
-  build: {
+  build_test: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/app'
+    assetsRoot: path.resolve(__dirname, '../dist_test'),
+    publicPath: '/'
+  },
+  build: {
+    assetsSubDirectory: 'static',
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    publicPath: '/'
   }
 }
