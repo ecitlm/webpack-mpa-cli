@@ -1,7 +1,4 @@
 'use strict'
-// Template version: 1.2.8
-// see http://vuejs-templates.github.io/webpack for documentation.
-
 const path = require('path')
 
 module.exports = {
@@ -20,6 +17,7 @@ module.exports = {
 
     host: '0.0.0.0',
     port: 8888,
+    contentBase: './dist',
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,

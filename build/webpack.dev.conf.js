@@ -9,7 +9,7 @@ module.exports = merge(common, {
     publicPath: config.dev.assetsPublicPath
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: config.dev.contentBase,
     host: config.dev.host,
     open: true,
     useLocalIp: true,

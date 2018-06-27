@@ -1,8 +1,8 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const Uglify = require('uglifyjs-webpack-plugin')
 const utils = require('./utils')
-// const autoprefixer = require('autoprefixer')
 module.exports = {
   entry: {
     index: ['./src/assets/js/index.js']
@@ -10,10 +10,18 @@ module.exports = {
   output: {
     filename: utils.assetsPath('js/[name].[hash].js')
   },
-  externals: {
-  },
   module: {
     rules: [
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery'
+        }, {
+          loader: 'expose-loader',
+          options: '$'
+        }]
+      },
       {
         test: /\.css$/,
         use: [{
@@ -76,14 +84,16 @@ module.exports = {
       }]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery'
+    }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].css')
+      filename: utils.assetsPath('css/[name].[hash].css')
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        // warnings: false
-      }
-    }),
+    new Uglify(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
