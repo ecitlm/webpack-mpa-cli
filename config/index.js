@@ -1,6 +1,5 @@
 'use strict'
 const path = require('path')
-
 module.exports = {
   dev: {
     // Paths
@@ -14,7 +13,6 @@ module.exports = {
         logLevel: 'debug'
       }
     },
-
     host: '0.0.0.0',
     port: 8888,
     contentBase: './dist',
