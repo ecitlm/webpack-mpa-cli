@@ -9,3 +9,8 @@ $(document).ready(function () {
   console.log('jquery success')
   $('title').text('success')
 })
+
+var fn=(res)=>{
+	console.log(res)
+}
+fn(100)
